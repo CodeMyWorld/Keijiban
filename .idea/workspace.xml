@@ -2,47 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a2e7fb7-dcc5-4b21-8715-b29faa79233a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/servlet-api.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alex/dao/imp/IPostDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alex/service/IPostService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alex/model/Post.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alex/dao/imp/PostDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alex/service/imp/PostService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/homepage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/keijiban/homepage.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-1.12.2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/npm.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/alex/model/Group.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/alex/model/Group.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/alex/model/User.class" afterPath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/alex/model/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/alex/controller/UserController.class" afterPath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/alex/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alex/dao/imp/IUserDao.java" afterPath="$PROJECT_DIR$/src/alex/dao/imp/IUserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alex/service/IUserService.java" afterPath="$PROJECT_DIR$/src/alex/service/IUserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alex/model/User.java" afterPath="$PROJECT_DIR$/src/alex/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alex/controller/UserController.java" afterPath="$PROJECT_DIR$/src/alex/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alex/dao/imp/UserDao.java" afterPath="$PROJECT_DIR$/src/alex/dao/imp/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alex/service/imp/UserService.java" afterPath="$PROJECT_DIR$/src/alex/service/imp/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/jsp/user/detail.jsp" afterPath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/jsp/user/detail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/user/detail.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/user/detail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/mvc-dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/mvc-dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/persistence-mysql.properties" afterPath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/classes/persistence-mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/persistence-mysql.properties" afterPath="$PROJECT_DIR$/src/persistence-mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/SpringMVCTemplate_war_exploded/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SpringMVCTemplate.iws" />
@@ -95,8 +56,8 @@
       <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/alex/dao/imp/UserDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4231177">
-              <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.08907741">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -237,8 +198,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-296" />
-    <option name="y" value="214" />
+    <option name="x" value="258" />
+    <option name="y" value="275" />
     <option name="width" value="1704" />
     <option name="height" value="1360" />
   </component>
@@ -941,7 +902,7 @@
       <workItem from="1458014370497" duration="2495000" />
       <workItem from="1458701518583" duration="88000" />
       <workItem from="1458709553944" duration="7816000" />
-      <workItem from="1458717414027" duration="1708000" />
+      <workItem from="1458717414027" duration="2682000" />
     </task>
     <task id="LOCAL-00001" summary="query test">
       <created>1452481726646</created>
@@ -959,11 +920,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16226000" />
+    <option name="totallyTimeSpent" value="17200000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-296" y="214" width="1704" height="1360" extended-state="0" />
-    <editor active="false" />
+    <frame x="258" y="275" width="1704" height="1360" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -986,7 +947,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13656388" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17593712" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22496025" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22496025" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1473,8 +1434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alex/dao/imp/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4231177">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.08907741">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding />
         </state>
       </provider>
