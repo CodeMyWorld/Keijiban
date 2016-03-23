@@ -23,10 +23,6 @@ public class User implements Serializable {
 	@Column(name="password", length=45)
 	private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "groupid")
-    private Group group;
-
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -57,11 +53,4 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
 }

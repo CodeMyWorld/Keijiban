@@ -13,6 +13,5 @@
 <body>
 <p>${user.username}</p>
 <p>${user.password}</p>
-<P>${user.group.groupName}</P>
 </body>
 </html>

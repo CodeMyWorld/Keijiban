@@ -24,4 +24,8 @@ public class UserService extends AbstractService<User> implements IUserService{
 	protected IOperations<User> getDao(){
 		return this.dao;
 	}
+
+	public boolean login(User user){
+		return dao.login(user);
+	}
 }

@@ -4,5 +4,5 @@ import alex.model.User;
 import alex.dao.common.IOperations;
 
 public interface IUserDao extends IOperations<User> {
-    
+    boolean login(User user);
 }
