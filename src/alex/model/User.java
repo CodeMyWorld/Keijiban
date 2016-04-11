@@ -23,6 +23,7 @@ public class User implements Serializable {
 	@Column(name="password", length=45)
 	private String password;
 
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

@@ -15,17 +15,24 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
     }
 
     @Override
-    public boolean login(User user) {
+    public User login(User user) {
         String username = user.getUsername();
         String hql = "from User where username=:username";
         List<User> result = getCurrentSesstion().createQuery(hql).setString("username",username).list();
         if(result.size() == 0){
-            return false;
+            return null;
         }else {
          if(!result.get(0).getPassword().equals(user.getPassword())){
-             return false;
+             return null;
          }
         }
-        return true;
+        return result.get(0);
+    }
+
+    @Override
+    public List<User> search(String keyword) {
+        String hql = "from User where username like :keyword";
+        List<User> result = getCurrentSesstion().createQuery(hql).setString("keyword", "%"+keyword+"%").list();
+        return result;
     }
 }

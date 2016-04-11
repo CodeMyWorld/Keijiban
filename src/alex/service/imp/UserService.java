@@ -2,6 +2,7 @@ package alex.service.imp;
 
 import javax.annotation.Resource;
 
+import alex.dao.imp.IFollowDao;
 import org.springframework.stereotype.Service;
 
 import alex.dao.common.IOperations;
@@ -10,11 +11,15 @@ import alex.model.User;
 import alex.service.IUserService;
 import alex.service.common.AbstractService;
 
+import java.util.List;
+
 @Service("userService")
 public class UserService extends AbstractService<User> implements IUserService{
 	
 	@Resource(name="userDao")
 	private IUserDao dao;
+
+
 	
 	public UserService(){
 		super();
@@ -25,7 +30,12 @@ public class UserService extends AbstractService<User> implements IUserService{
 		return this.dao;
 	}
 
-	public boolean login(User user){
+	public User login(User user){
 		return dao.login(user);
+	}
+
+	@Override
+	public List<User> search(String keyword) {
+		return dao.search(keyword);
 	}
 }

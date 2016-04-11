@@ -2,16 +2,15 @@ package alex.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import alex.model.User;
 import alex.service.IUserService;
 
+import java.util.List;
 
 
 @Controller
@@ -58,9 +57,23 @@ public class UserController {
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView login(HttpSession httpSession, @ModelAttribute("user") User user){
-		boolean check = userService.login(user);
-		System.out.println(check);
+	@ResponseBody
+	public String login(HttpSession httpSession, @ModelAttribute("user") User user){
+		User loginUser = userService.login(user);
+		if(loginUser != null){
+			httpSession.setAttribute("user", loginUser);
+			System.out.println(user.getUsername());
+			return "ok";
+		}
+		return "error";
+	}
+
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public ModelAndView searchUser(String keyword){
+		List<User> result = userService.search(keyword);
+		for(User user : result){
+			System.out.println(user.getUsername());
+		}
 		return null;
 	}
 }

@@ -27,9 +27,23 @@ public class Post implements Serializable{
     @Column(name="time")
     private Timestamp time;
 
+    @Column(name = "nickname")
+    private String nickname;
+
     @ManyToOne
     @JoinColumn(name="userid")
     private User user;
+
+    @Column(name="userid", insertable = false, updatable = false)
+    private Integer userid;
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
 
     public Integer getId() {
         return id;
@@ -61,5 +75,13 @@ public class Post implements Serializable{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
