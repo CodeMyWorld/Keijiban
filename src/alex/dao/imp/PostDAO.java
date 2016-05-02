@@ -21,11 +21,23 @@ public class PostDAO extends AbstractHibernateDao<Post> implements IPostDao {
     private IFollowDao followDao;
 
     @Override
-    public List<Post> getFollowPost(Integer userid) {
+    public List<Post> getFollowPost(Integer userid, Integer page) {
         String hql = "from Post where userid in (:followList)";
         List<Integer> followList = followDao.getFollowList(userid);
-        List<Post> result = getCurrentSesstion().createQuery(hql).setParameterList("followList",followList).list();
+        List<Post> result = getCurrentSesstion().createQuery(hql).setParameterList("followList",followList)
+                .setFirstResult((page-1)*2)
+                .setMaxResults(2)
+                .list();
         System.out.println(followList.size()+" "+result.size());
         return result;
+    }
+
+    @Override
+    public int getPage(Integer userid) {
+        String hql = "from Post where userid in (:followList)";
+        List<Integer> followList = followDao.getFollowList(userid);
+        int result = getCurrentSesstion().createQuery(hql).setParameterList("followList",followList)
+                .list().size();
+        return result/2+1;
     }
 }

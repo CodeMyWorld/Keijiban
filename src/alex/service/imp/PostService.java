@@ -32,7 +32,12 @@ public class PostService extends AbstractService<Post> implements IPostService{
     }
 
     @Override
-    public List<Post> getFollowPost(Integer userid) {
-        return dao.getFollowPost(userid);
+    public List<Post> getFollowPost(Integer userid, Integer page) {
+        return dao.getFollowPost(userid,page);
+    }
+
+    @Override
+    public int getPage(Integer userid) {
+        return dao.getPage(userid);
     }
 }

@@ -9,15 +9,15 @@ $(document).ready(function(){
             console.log(postContent)
             $.ajax({
                 type: "POST",
-                url: "/post/submitPost",
+                url: "submitPost",
                 data: postContent,
-                success: function(data, status, xhr){
+                success: function(data, status){
                     console.log(status+" "+data);
                     goHomePage();
                 },
                 error: function(request, status, error){
                     console.log("error");
-                },
+                }
             });
         });
 
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "/user/login",
+            url: "/login",
             data: login,
             success: function(data, status, xhr){
                 console.log(data);
@@ -40,9 +40,18 @@ $(document).ready(function(){
             }
         })
     });
+
+    $.ajax({
+        type:"GET",
+        url:"/getsession",
+        success: function (data) {
+            console.log(data)
+            $("#nickname").val(data.nickname);
+            $("#username-show").text("Hello "+data.username);
+        }
+    })
 });
 
 function goHomePage(){
-
-    location.href="/post/homePage"
+    location.href="/homePage/1"
 }

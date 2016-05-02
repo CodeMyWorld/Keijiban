@@ -2,8 +2,10 @@ package alex.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
 
+import alex.model.Session;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,13 +16,13 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 
 	@Resource(name = "userService")
 	private IUserService userService;
 
-	@RequestMapping(value="/register", method=RequestMethod.GET)
+	@RequestMapping(value="register", method=RequestMethod.GET)
 	public ModelAndView getRegister(){
 		ModelAndView mView = new ModelAndView();
 //        User user = userService.findOne(1);
@@ -29,7 +31,7 @@ public class UserController {
 		return mView;
 	}
 	
-	@RequestMapping(value="/register", method=RequestMethod.POST)
+	@RequestMapping(value="register", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute("user") User user){
 		userService.create(user);
 		ModelAndView mView = new ModelAndView();
@@ -39,7 +41,7 @@ public class UserController {
 		return mView;
 	}
 
-	@RequestMapping(value="/show/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="show/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetail(@PathVariable Integer id){
 		User user = userService.findOne(id);
 		ModelAndView mv = new ModelAndView();
@@ -49,23 +51,23 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(value="/test", method=RequestMethod.GET)
+	@RequestMapping(value="test", method=RequestMethod.GET)
 	public ModelAndView getHello(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("user/hello");
 		return mv;
 	}
 
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@RequestMapping(value="login", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(HttpSession httpSession, @ModelAttribute("user") User user){
+	public ModelAndView login(HttpSession httpSession, @ModelAttribute("user") User user){
 		User loginUser = userService.login(user);
 		if(loginUser != null){
 			httpSession.setAttribute("user", loginUser);
 			System.out.println(user.getUsername());
-			return "ok";
+			return new ModelAndView("redirect:/homePage/1");
 		}
-		return "error";
+		return new ModelAndView("error");
 	}
 
 	@RequestMapping(value="/search", method=RequestMethod.GET)
@@ -75,5 +77,30 @@ public class UserController {
 			System.out.println(user.getUsername());
 		}
 		return null;
+	}
+
+	@RequestMapping(value="logout", method=RequestMethod.GET)
+	public ModelAndView login(HttpSession httpSession){
+		httpSession.removeAttribute("user");
+		httpSession.removeAttribute("nickname");
+		return new ModelAndView("redirect:/index");
+	}
+
+	@RequestMapping(value="getsession", method = RequestMethod.GET)
+
+	public ResponseEntity<Session> getSession(HttpSession session){
+		String nickname;
+		if(session.getAttribute("nickname") != null){
+			nickname = session.getAttribute("nickname").toString();
+		}else {
+			nickname = null;
+		}
+		Session result = new Session(((User)session.getAttribute("user")).getUsername(),nickname);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@RequestMapping(value="/index", method = RequestMethod.GET)
+	public ModelAndView index(){
+		return new ModelAndView("index");
 	}
 }

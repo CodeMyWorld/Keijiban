@@ -72,15 +72,15 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" id="username-show" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login">
-              Launch demo modal
-            </button></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a data-toggle="modal" data-target="#login">
+              Login
+            </a></li>
+            <li><a data-toggle="modal" data-target="#login">
+              Register
+            </a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -116,25 +116,27 @@
     </div>
   </c:forEach>
 
+
   <div class="row">
     <div class="col-md-12">
       <nav>
         <ul class="pagination">
           <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
+          <c:forEach begin="1" end="${pages}" var="i">
+            <c:choose>
+              <c:when test="${i eq current}">
+                <li class="active"><a href="/homePage/${i}">${i}<span class="sr-only">(current)</span></a></li>
+              </c:when>
+              <c:otherwise>
+                <li><a href="/homePage/${i}">${i}</a></li>
+              </c:otherwise>
+            </c:choose>
+          </c:forEach>
         </ul>
       </nav>
     </div>
   </div>
 </div>
-
-
-
-
 
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -191,13 +193,8 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button id="login_button" type="button" class="btn btn-primary">Login</button>
         </div>
-
-
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
-
 </body>
 </html>
