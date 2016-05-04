@@ -3,6 +3,7 @@ package alex.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by alex on 16-3-23.
@@ -25,7 +26,7 @@ public class Post implements Serializable{
     private String content;
 
     @Column(name="time")
-    private Timestamp time;
+    private Date time;
 
     @Column(name = "nickname")
     private String nickname;
@@ -39,6 +40,16 @@ public class Post implements Serializable{
 
     public Integer getUserid() {
         return userid;
+    }
+
+    @Transient
+    private String timeForDisplay;
+
+    public String getTimeForDisplay() {
+        return timeForDisplay;
+    }
+    public void setTimeForDisplay(String timeForDisplay) {
+        this.timeForDisplay = timeForDisplay;
     }
 
     public void setUserid(Integer userid) {
@@ -61,11 +72,11 @@ public class Post implements Serializable{
         this.content = content;
     }
 
-    public Timestamp getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

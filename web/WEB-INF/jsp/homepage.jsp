@@ -63,7 +63,7 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" method="get" action="/user/search">
+      <form class="navbar-form navbar-left" role="search" method="get" action="/search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="keyword">
         </div>
@@ -108,9 +108,9 @@
         <div class="panel panel-info">
           <div class="panel-heading">${post.nickname}</div>
           <div class="panel-body">
-              ${post.content}
+            <p class="lead">${post.content} </p>
           </div>
-          <div class="panel-footer">Panel footer</div>
+          <div class="panel-footer">${post.timeForDisplay}</div>
         </div>
       </div>
     </div>

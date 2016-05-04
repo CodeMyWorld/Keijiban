@@ -41,15 +41,7 @@ public class UserController {
 		return mView;
 	}
 
-	@RequestMapping(value="show/{id}", method=RequestMethod.GET)
-	public ModelAndView showDetail(@PathVariable Integer id){
-		User user = userService.findOne(id);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("user/detail");
-		mv.addObject("user", user);
-		System.out.println("bug");
-		return mv;
-	}
+
 
 	@RequestMapping(value="test", method=RequestMethod.GET)
 	public ModelAndView getHello(){
@@ -70,13 +62,15 @@ public class UserController {
 		return new ModelAndView("error");
 	}
 
-	@RequestMapping(value="/search", method=RequestMethod.GET)
+	@RequestMapping(value="search", method=RequestMethod.GET)
 	public ModelAndView searchUser(String keyword){
 		List<User> result = userService.search(keyword);
 		for(User user : result){
 			System.out.println(user.getUsername());
 		}
-		return null;
+		ModelAndView mv = new ModelAndView("search");
+		mv.addObject("result", result);
+		return mv;
 	}
 
 	@RequestMapping(value="logout", method=RequestMethod.GET)
@@ -84,6 +78,14 @@ public class UserController {
 		httpSession.removeAttribute("user");
 		httpSession.removeAttribute("nickname");
 		return new ModelAndView("redirect:/index");
+	}
+
+	@RequestMapping(value="follow", method = RequestMethod.POST)
+	public String following(HttpSession httpSession, Integer userId){
+		System.out.println(userId);
+		User user = (User)httpSession.getAttribute("user");
+		userService.follow(user,userId);
+		return "OK";
 	}
 
 	@RequestMapping(value="getsession", method = RequestMethod.GET)
@@ -99,7 +101,7 @@ public class UserController {
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(value="/index", method = RequestMethod.GET)
+	@RequestMapping(value="index", method = RequestMethod.GET)
 	public ModelAndView index(){
 		return new ModelAndView("index");
 	}

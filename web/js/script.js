@@ -9,7 +9,7 @@ $(document).ready(function(){
             console.log(postContent)
             $.ajax({
                 type: "POST",
-                url: "submitPost",
+                url: "/submitPost",
                 data: postContent,
                 success: function(data, status){
                     console.log(status+" "+data);
@@ -41,6 +41,10 @@ $(document).ready(function(){
         })
     });
 
+    $("p[class='lead']").each(function(){
+       $(this).html(replace($(this).text())) ;
+    });
+
     $.ajax({
         type:"GET",
         url:"/getsession",
@@ -54,4 +58,19 @@ $(document).ready(function(){
 
 function goHomePage(){
     location.href="/homePage/1"
+}
+
+function replace(inputText){
+    var replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    var replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a> <br>');
+
+    //URLs starting with www. (without // before it, or it'd re-link the ones done above)
+    var replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    var replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a> <br>');
+
+    //Change email addresses to mailto:: links
+    var replacePattern3 = /(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})/gim;
+    var replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a> <br>');
+
+    return replacedText
 }
