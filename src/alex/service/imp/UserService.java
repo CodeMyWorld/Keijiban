@@ -12,6 +12,7 @@ import alex.model.User;
 import alex.service.IUserService;
 import alex.service.common.AbstractService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("userService")
@@ -38,8 +39,8 @@ public class UserService extends AbstractService<User> implements IUserService{
 	}
 
 	@Override
-	public List<User> search(String keyword) {
-		return dao.search(keyword);
+	public List<User> search(String keyword, Integer userId) {
+		return dao.search(keyword, userId);
 	}
 
 	@Override
@@ -49,4 +50,34 @@ public class UserService extends AbstractService<User> implements IUserService{
 		follow.setFollowId(followId);
 		followDao.create(follow);
 	}
+
+	@Override
+	public List<User> getFollowing(Integer userId) {
+		List<Integer> followList = followDao.getFollowList(userId);
+		List<User> following = new ArrayList<>();
+		for(Integer id : followList){
+			following.add(dao.findOne(id));
+		}
+		return following;
+	}
+
+	@Override
+	public void unfollow(int userid, int followid) {
+		Follow deletedFollow = followDao.getFollow(userid, followid);
+		followDao.delete(deletedFollow);
+	}
+
+	@Override
+	public User register(String username, String password) {
+		if(dao.queryList("username", username).size() == 0){
+			User user = new User();
+			user.setUsername(username);
+			user.setPassword(password);
+			dao.create(user);
+			return user;
+		}
+		return null;
+	}
+
+
 }

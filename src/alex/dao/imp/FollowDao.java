@@ -23,5 +23,15 @@ public class FollowDao extends AbstractHibernateDao<Follow> implements IFollowDa
         return result;
     }
 
-
+    @Override
+    public Follow getFollow(int userId, int followId) {
+        String hql = "from Follow where userid=:userId and followId=:followId";
+        List<Follow> result = getCurrentSesstion().createQuery(hql).setInteger("userId", userId)
+                .setInteger("followId", followId)
+                .list();
+        if(result != null){
+            return result.get(0);
+        }
+        return null;
+    }
 }

@@ -21,50 +21,40 @@ public class UserController {
 
 	@Resource(name = "userService")
 	private IUserService userService;
-
-	@RequestMapping(value="register", method=RequestMethod.GET)
-	public ModelAndView getRegister(){
-		ModelAndView mView = new ModelAndView();
-//        User user = userService.findOne(1);
-//        mView.addObject("user", user);
-		mView.setViewName("user/register");
-		return mView;
-	}
 	
-	@RequestMapping(value="register", method=RequestMethod.POST)
-	public ModelAndView add(@ModelAttribute("user") User user){
-		userService.create(user);
-		ModelAndView mView = new ModelAndView();
-		user = userService.findOne(1);
-        mView.addObject("user", user);
-		mView.setViewName("user/detail");
-		return mView;
-	}
+	@RequestMapping(value="register", method = RequestMethod.POST)
 
-
-
-	@RequestMapping(value="test", method=RequestMethod.GET)
-	public ModelAndView getHello(){
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("user/hello");
-		return mv;
+	public @ResponseBody String add(String username,String password,
+									 String confirmPass){
+		System.out.println(username+" "+password);
+		if(password.equals(confirmPass)){
+			if(userService.register(username, password) != null){
+				return "success";
+			}else {
+				return "exist";
+			}
+		}
+		return "passerror";
 	}
 
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView login(HttpSession httpSession, @ModelAttribute("user") User user){
+	public String login(HttpSession httpSession, @ModelAttribute("user") User user){
+		System.out.println("hello login");
+		System.out.println(user.getUsername()+" "+user.getPassword());
 		User loginUser = userService.login(user);
 		if(loginUser != null){
 			httpSession.setAttribute("user", loginUser);
 			System.out.println(user.getUsername());
-			return new ModelAndView("redirect:/homePage/1");
+			return "success";
 		}
-		return new ModelAndView("error");
+		return "error";
 	}
 
 	@RequestMapping(value="search", method=RequestMethod.GET)
-	public ModelAndView searchUser(String keyword){
-		List<User> result = userService.search(keyword);
+	public ModelAndView searchUser(String keyword, HttpSession session){
+		User currentUser = (User)session.getAttribute("user");
+		List<User> result = userService.search(keyword, currentUser.getId());
 		for(User user : result){
 			System.out.println(user.getUsername());
 		}
@@ -80,7 +70,8 @@ public class UserController {
 		return new ModelAndView("redirect:/index");
 	}
 
-	@RequestMapping(value="follow", method = RequestMethod.POST)
+	@RequestMapping(value="follow", method = RequestMethod.GET)
+	@ResponseBody
 	public String following(HttpSession httpSession, Integer userId){
 		System.out.println(userId);
 		User user = (User)httpSession.getAttribute("user");
@@ -89,7 +80,6 @@ public class UserController {
 	}
 
 	@RequestMapping(value="getsession", method = RequestMethod.GET)
-
 	public ResponseEntity<Session> getSession(HttpSession session){
 		String nickname;
 		if(session.getAttribute("nickname") != null){
@@ -99,6 +89,23 @@ public class UserController {
 		}
 		Session result = new Session(((User)session.getAttribute("user")).getUsername(),nickname);
 		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@RequestMapping(value="following", method = RequestMethod.GET)
+	public ModelAndView getFollowing(HttpSession session){
+		User user = (User)session.getAttribute("user");
+		List<User> result = userService.getFollowing(user.getId());
+		ModelAndView mv = new ModelAndView("following");
+		mv.addObject("result", result);
+		return mv;
+	}
+
+	@RequestMapping(value="unfollow", method = RequestMethod.GET)
+	@ResponseBody
+	public String unfollowing(HttpSession httpSession, int followId){
+		User user = (User)httpSession.getAttribute("user");
+		userService.unfollow(user.getId(), followId);
+		return "OK";
 	}
 
 	@RequestMapping(value="index", method = RequestMethod.GET)

@@ -28,19 +28,21 @@ public class PostController {
     @RequestMapping(value="/submitPost", method= RequestMethod.POST)
     @ResponseBody
     public String submitPost(@ModelAttribute("post")Post post, HttpSession httpSession){
-        System.out.println(post.getContent());
         post.setUser((User)httpSession.getAttribute("user"));
         post.setTime(new Date());
         String nickname = post.getNickname();
+        if(nickname.length() > 10){
+            return "nickname error";
+        }
         httpSession.setAttribute("nickname", nickname);
+        if(post.getContent().length() > 140){
+            return "content error";
+        }
         postService.create(post);
-        //check limitation of tweet 140 characters
-        return "OK OK";
+        return "success";
     }
 
-
-
-    @RequestMapping(value="/homePage/{page}", method=RequestMethod.GET)
+    @RequestMapping(value="homePage/{page}", method=RequestMethod.GET)
     public ModelAndView homePage(HttpSession session, @PathVariable Integer page){
         User user = (User)session.getAttribute("user");
         List<Post> posts = null;

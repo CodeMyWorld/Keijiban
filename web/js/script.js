@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    $("#head").load("/html/head.html");
+
         $("#submitbutton").click(function(){
             console.log("ajax");
             var postContent = {
@@ -12,8 +15,16 @@ $(document).ready(function(){
                 url: "/submitPost",
                 data: postContent,
                 success: function(data, status){
-                    console.log(status+" "+data);
-                    goHomePage();
+                    console.log(data);
+                    if(data == "success"){
+                        goHomePage();
+                    }else if(data == "content error"){
+                        $("#warning").text("The length of content should be less than 140");
+                        $("#error").modal("show");
+                    }else if(data == "nickname error"){
+                        $("#warning").text("The length of nickname should be less than 10");
+                        $("#error").modal("show");
+                    }
                 },
                 error: function(request, status, error){
                     console.log("error");

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IUserDao extends IOperations<User> {
     User login(User user);
-    List<User> search(String keyword);
+    List<User> search(String keyword, Integer userId);
 }

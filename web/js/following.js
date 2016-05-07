@@ -1,16 +1,16 @@
 $(document).ready(function(){
     $("#head").load("/html/head.html");
 
-    $("button[name='follow']").each(function(){
+    $("button[name='unfollow']").each(function(){
         $(this).click(function(){
             $.ajax({
                 typ: "GET",
-                url: "/follow",
+                url: "/unfollow",
                 data:{
-                    userId:$(this).data("userid")
+                    followId:$(this).data("userid")
                 },
                 success:function(){
-                    alert("unfollow Success");
+                    alert("unFollow Success");
                 },
                 error:function(data){
 
@@ -18,4 +18,4 @@ $(document).ready(function(){
             });
         })
     })
-});
+})

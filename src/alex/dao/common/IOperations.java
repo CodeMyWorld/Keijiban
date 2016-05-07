@@ -17,4 +17,6 @@ public interface IOperations<T extends Serializable> {
 
 	void deleteById(int id);
 
+	List<T> queryList(String para, String value);
+
 }

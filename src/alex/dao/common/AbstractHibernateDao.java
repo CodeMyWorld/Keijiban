@@ -61,5 +61,13 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
 		Preconditions.checkState(entity != null);
 		delete(entity);
 	}
+
+	@Override
+	public List<T> queryList(String para, String v){
+		String hql = "from " + clazz.getName()+" where "+para+" = :v";
+		return getCurrentSesstion().createQuery(hql)
+				.setString("v", v)
+				.list();
+	}
 	
 }

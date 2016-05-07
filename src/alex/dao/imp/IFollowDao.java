@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface IFollowDao extends IOperations<Follow>{
     List<Integer> getFollowList(Integer userid);
+    Follow getFollow(int userId, int followId);
 }

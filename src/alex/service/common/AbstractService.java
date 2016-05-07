@@ -42,4 +42,8 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
 		getDao().deleteById(id);
 	}
 
+	@Override
+	public List<T> queryList(String para, String value){return getDao().queryList(para, value);}
+
+
 }

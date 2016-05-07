@@ -29,29 +29,32 @@
   <![endif]-->
 </head>
 <body>
-<form method="post" action="/login">
-  <div class="form-group">
-    <label for="username">Email address</label>
-    <input class="form-control" id="username" placeholder="Your name" name="username">
+<div class="container">
+  <div class="col-md-5 col-md-offset-3">
+      <div class="form-group">
+        <label for="username">Email address</label>
+        <input class="form-control" id="username" placeholder="Your name" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+      </div>
+      <button id="login_button" type="submit" class="btn btn-primary">Sign In</button>
+      <button  class="btn btn-default" data-toggle="modal" data-target="#register">Sign Up</button>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-  <button  class="btn btn-default" data-toggle="modal" data-target="#login">Register</button>
-</form>
+</div>
 
 
 
-<div class="modal fade" id="login">
+
+<div class="modal fade" id="register">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Modal title</h4>
       </div>
-     <form action="/register" method="post">
+
       <div class="modal-body">
         <div class="form-group">
           <label for="username_login">Email address</label>
@@ -63,15 +66,29 @@
         </div>
         <div class="form-group">
           <label for="password-confirm">Password</label>
-          <input type="password" class="form-control" id="password-confirm" placeholder="Confirm Password">
+          <input type="password" class="form-control" id="password-confirm" placeholder="Confirm Password" name="confirm_pass">
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="register-button" class="btn btn-default" data-dismiss="modal">Sign In</button>
       </div>
-    </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="info">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Info</h4>
+      </div>
+
+      <div class="modal-body">
+        <P id="info_content" class="bg-primary"></P>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

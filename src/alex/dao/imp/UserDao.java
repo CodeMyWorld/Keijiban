@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import alex.dao.common.AbstractHibernateDao;
 import alex.model.User;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Repository("userDao")
@@ -13,6 +14,9 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
         super();
         setClass(User.class);
     }
+
+    @Resource(name="followDao")
+    private IFollowDao followDao;
 
     @Override
     public User login(User user) {
@@ -30,9 +34,12 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
     }
 
     @Override
-    public List<User> search(String keyword) {
-        String hql = "from User where username like :keyword";
-        List<User> result = getCurrentSesstion().createQuery(hql).setString("keyword", "%"+keyword+"%").list();
+    public List<User> search(String keyword, Integer userId) {
+        List<Integer> followList = followDao.getFollowList(userId);
+        String hql = "from User where username like :keyword and id not in (:followList)";
+        List<User> result = getCurrentSesstion().createQuery(hql).setString("keyword", "%"+keyword+"%")
+                .setParameterList("followList", followList)
+                .list();
         return result;
     }
 }

@@ -26,7 +26,7 @@
   <script src="/js/bootstrap.min.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <script src="/js/search.js"></script>
+  <script src="/js/following.js"></script>
   <!--[if lt IE 9]>
   <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -35,14 +35,15 @@
 </head>
 <body>
 <div id="head"></div>
+
 <div class="container">
- <c:forEach items="${result}" var="user">
+  <c:forEach items="${result}" var="user">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
           <div class="panel-heading">
-            ${user.username}
-            <button name="follow" type="button" class="btn-primary pull-right" data-userid="${user.id}">Follow</button>
+              ${user.username}
+            <button name="unfollow" type="button" class="btn-primary pull-right" data-userid="${user.id}">Unfollow</button>
           </div>
         </div>
       </div>
