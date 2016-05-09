@@ -63,17 +63,17 @@ public class PostController {
                 long second=diff;
                 String timeStr;
                 if(day>0&&day<=29){
-                    timeStr=day+"天前";
+                    timeStr=day+" days ago";
                 }else if(day>29){
                     timeStr=df.format(time);
                 }else{
                     if(hour>0){
-                        timeStr=hour+"小时前";
+                        timeStr=hour+" hours ago";
                     }else{
                         if(minute>0){
-                            timeStr=minute+"分钟前";
+                            timeStr=minute+" minutes ago";
                         }else{
-                            timeStr=second+"秒前";
+                            timeStr=second+" seconds ago";
                         }
                     }
                 }

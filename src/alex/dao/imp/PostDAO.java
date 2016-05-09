@@ -25,8 +25,8 @@ public class PostDAO extends AbstractHibernateDao<Post> implements IPostDao {
         String hql = "from Post where userid in (:followList) order by time desc ";
         List<Integer> followList = followDao.getFollowList(userid);
         List<Post> result = getCurrentSesstion().createQuery(hql).setParameterList("followList",followList)
-                .setFirstResult((page-1)*2)
-                .setMaxResults(2)
+                .setFirstResult((page-1)*10)
+                .setMaxResults(10)
                 .list();
         System.out.println(followList.size()+" "+result.size());
         return result;
@@ -38,6 +38,6 @@ public class PostDAO extends AbstractHibernateDao<Post> implements IPostDao {
         List<Integer> followList = followDao.getFollowList(userid);
         int result = getCurrentSesstion().createQuery(hql).setParameterList("followList",followList)
                 .list().size();
-        return result/2;
+        return result/10+1;
     }
 }

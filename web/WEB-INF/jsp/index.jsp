@@ -12,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-  <title>Bootstrap 101 Template</title>
+  <title>掲示板</title>
 
   <!-- Bootstrap -->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 <div class="container">
   <div class="col-md-5 col-md-offset-3">
       <div class="form-group">
-        <label for="username">Email address</label>
+        <label for="username">Your name</label>
         <input class="form-control" id="username" placeholder="Your name" name="username">
       </div>
       <div class="form-group">
@@ -52,12 +52,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Sign Up</h4>
       </div>
 
       <div class="modal-body">
         <div class="form-group">
-          <label for="username_login">Email address</label>
+          <label for="username_login">Your name</label>
           <input type="text" class="form-control" id="username_login" placeholder="Username" name="username">
         </div>
         <div class="form-group">
@@ -70,7 +70,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button id="register-button" class="btn btn-default" data-dismiss="modal">Sign In</button>
+        <button id="register-button" class="btn btn-default" data-dismiss="modal">Sign Up</button>
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="modal-body">
-        <P id="info_content" class="bg-primary"></P>
+        <P id="info_content" class="bg-info"></P>
       </div>
     </div>
   </div>

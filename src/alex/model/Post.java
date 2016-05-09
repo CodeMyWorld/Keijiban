@@ -22,7 +22,7 @@ public class Post implements Serializable{
     @Column(name="id")
     private Integer id;
 
-    @Column(name="content", length=200)
+    @Column(name="content", length=225)
     private String content;
 
     @Column(name="time")
